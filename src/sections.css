@@ -1,0 +1,50 @@
+.top-inner { gap: 18px; }
+.sections-nav { display:flex; gap:4px; padding:4px; border:1px solid var(--line); border-radius:12px; background:#f4f5ee; }
+.sections-nav a { display:inline-flex; align-items:center; justify-content:center; text-decoration:none; gap:7px; padding:8px 13px; color:#545a4f; border:1px solid transparent; border-radius:8px; font-size:13px; font-weight:650; }
+.sections-nav a[aria-current] { background:#e0f4c4; border-color:#909d7d; color:var(--ink); box-shadow:0 1px 0 #b3bca7; }
+.sections-nav a:hover { color:var(--ink); background:#e8ebdf; }
+.sections-nav a:focus-visible { outline:3px solid #7159ba; }
+.intro { --accent:#dbefc0; position:relative; display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:22px; padding:22px 30px; overflow:hidden; border:1px solid #c9d6b9; border-radius:15px; background:linear-gradient(105deg,#f0f7e7,var(--accent)); animation:caption-in .22s ease-out; }
+.intro-1 { --accent:#e6dbf6; background:linear-gradient(105deg,#f8f4fc,var(--accent)); border-color:#d8cce3; }
+.intro-2 { --accent:#fadfc1; background:linear-gradient(105deg,#fff8ee,var(--accent)); border-color:#e4d4bb; }
+.intro-3 { --accent:#cae8e7; background:linear-gradient(105deg,#f1f9f6,var(--accent)); border-color:#bad7d2; }
+.intro h1 { font-size:clamp(36px,3.7vw,55px); }
+.intro h1:focus { outline:none; }
+.intro p { margin:7px 0 0; }
+.section-stamp { background:#fffefa; width:70px; height:66px; border:2px solid var(--ink); border-radius:19px; display:grid; place-items:center; transform:rotate(8deg); box-shadow:4px 4px 0 var(--accent),5px 5px 0 #737966; margin:0 14px; flex:none; }
+.layout { grid-template-columns:minmax(0,1.45fr) minmax(360px,1fr); }
+.layout .live-queue { margin-top:0; }
+.why span { font-size:18px; }
+.view-switch { display:inline-flex; border:1px solid #d2d7c9; background:#f0f2ea; border-radius:8px; padding:2px; margin-bottom:10px; }
+.view-switch button { display:flex; align-items:center; gap:5px; border:0; color:#525b49; background:transparent; border-radius:6px; font-size:12px; padding:5px 9px; }
+.view-switch button[aria-pressed=true] { color:var(--ink); background:var(--paper); box-shadow:0 1px 3px #30362b45; font-weight:650; }
+.sky { background:radial-gradient(#cbd3bf 0.75px,transparent 1px) 3px 3px / 12px 12px,#f7f9f1; border:1px solid #d6ddcb; border-radius:10px; overflow:hidden; }
+.star-map { width:100%; max-height:195px; display:block; }
+.star-map line { stroke:#bbc6ae; stroke-width:1; stroke-dasharray:3 4; }
+.star { cursor:pointer; outline:none; transition:transform .45s; }
+.star circle { transition:r .45s; }
+.star-ring { fill:none; stroke:transparent; stroke-width:1.25; }
+.star[aria-pressed=true] .star-ring,.star:focus-visible .star-ring { stroke:var(--ink); stroke-dasharray:3 2; }
+.star:focus-visible .star-ring {stroke-width:3}
+.star-body { fill:var(--color); stroke:#3d4536; stroke-width:1.2; }
+.star text { font:600 11px system-ui,sans-serif; fill:#363b30; paint-order:stroke; stroke:#f7f9f1; stroke-width:4px; }
+.star-detail { display:flex; align-items:center; gap:7px; background:#fffef9; border-top:1px solid #d6ddcb; padding:7px 10px; font-size:12px; font-weight:650; }
+.star-detail i { width:9px; height:9px; border-radius:50%; background:var(--color); border:1px solid #727965; }
+.star-detail span { margin-left:auto; color:#596052; font:11px ui-monospace,monospace; }
+@media(max-width:1000px) { .sections-nav a { padding:7px; gap:4px; } .layout {grid-template-columns:minmax(0,1.25fr) minmax(310px,1fr)} }
+@media(max-width:830px) {
+  .top-inner { flex-wrap:wrap; height:auto; gap:8px; padding:10px 0; }
+  .sections-nav { width:100%; order:3; }
+  .sections-nav a { flex:1; }
+}
+@media(max-width:720px) {
+  .intro { margin:0 0 16px; padding:16px; }
+  .intro p { margin:6px 0 0; }
+  .section-stamp {width:44px;height:44px;border-radius:12px;margin:0 4px;} .section-stamp svg {width:30px;}
+  .sections-nav a { flex-direction:column; gap:4px; font-size:11px; padding:5px 1px; }
+  .layout {display:flex;}
+  .star-detail {flex-wrap:wrap;}
+}
+@media(max-width:360px) { .section-stamp {display:none} }
+.left > .lens-lab { margin-top:18px; }
+@media(max-width:720px){.left > .lens-lab {width:100%;margin:0;order:2}}

@@ -1,0 +1,7 @@
+.actions{grid-template-columns:repeat(4,minmax(0,1fr))}
+.dislike{background:#faede5}.dislike:hover,.dislike[aria-pressed=true]{background:#ffd7c6}
+.dislike[aria-pressed=true] svg{fill:#a35c47}
+.travel-signal{position:fixed;z-index:5;width:10px;height:10px;border:1px solid var(--ink);background:#c4ee92;border-radius:50%;pointer-events:none;opacity:0;box-shadow:-5px 3px 0 -2px #b8a4d9}
+.feed-heading .counter{white-space:nowrap}
+@media(max-width:720px){.actions{gap:6px}.actions button{font-size:13px;gap:5px}.nav{gap:10px}}
+@media(max-width:380px){.actions button{gap:3px;font-size:12px}.actions button svg{width:15px}.nav .help{gap:4px}.intro h1{font-size:37px}}

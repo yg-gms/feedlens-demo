@@ -1,0 +1,126 @@
+.science { --color: #6dbbb2; --tag: #c8efea; }
+.lifestyle { --color: #dfbd60; --tag: #fbebbe; }
+.entertainment { --color: #dd8b78; --tag: #fbd9cf; }
+
+.interest-profile .sub { margin: 7px 0 10px; }
+.interest-bars {
+  --row-height: 24px;
+  position: relative;
+  height: calc(var(--topics) * var(--row-height));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.interest-row {
+  position: absolute;
+  inset: 0 0 auto;
+  height: var(--row-height);
+  display: grid;
+  grid-template-columns: 117px minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 9px;
+  transform: translateY(calc(var(--rank) * 100%));
+  transition: transform .48s cubic-bezier(.2,.75,.25,1);
+}
+.interest-row .topic-label { font-size: 13px; gap: 7px; }
+.interest-row b, .interest-delta, .queue-rank {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-variant-numeric: tabular-nums;
+}
+.interest-row b { font-size: 12px; font-weight: 600; text-align: right; }
+.interest-meter { position: relative; display: block; }
+.interest-meter .track { display: block; height: 9px; }
+.interest-pulse { position: absolute; inset: -2px 0; border-radius: 10px; pointer-events: none; animation: interest-pulse .75s ease-out both; }
+@keyframes interest-pulse {
+  from { box-shadow: 0 0 0 1px var(--color); background: color-mix(in srgb, var(--color) 30%, transparent); }
+  to { opacity: 0; box-shadow: 0 0 0 3px transparent; }
+}
+.interest-delta {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  white-space: nowrap;
+  color: #335b27;
+  background: #edf6e5;
+  border: 1px solid #c6dabb;
+  padding: 1px 3px;
+  border-radius: 4px;
+  font-size: 10px;
+  line-height: 1.15;
+  font-weight: 650;
+  transform: translateY(-50%);
+  pointer-events: none;
+  animation: interest-delta 1.5s ease-out both;
+}
+.interest-delta.loss { color: #843d36; background: #fff0eb; border-color: #ebc4b7; }
+@keyframes interest-delta {
+  0% { opacity: 0; transform: translateY(-15%); }
+  12%, 78% { opacity: 1; transform: translateY(-50%); }
+  100% { opacity: 0; transform: translateY(-95%); }
+}
+.interest-profile .signal-note { margin-top: 11px; }
+.signal-content { display: flex; align-items: center; gap: 8px; }
+.neutral-signal { color: #59604f; }
+.has-signal .signal-content { animation: signal-arrive .34s ease-out; }
+@keyframes signal-arrive { from { opacity: .6; transform: translateY(3px); } }
+
+.queue.live-queue ol {
+  --queue-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--queue-gap);
+}
+.queue.live-queue li {
+  grid-area: 1 / 1;
+  display: flex;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  transform: translateX(calc(var(--rank) * (100% + var(--queue-gap))));
+  transition: transform .46s cubic-bezier(.2,.75,.25,1);
+}
+.queue-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+  background: var(--paper);
+  border: 1px solid #c2c8b8;
+  border-radius: 9px;
+  padding: 4px;
+  animation: queue-arrive .28s ease-out;
+}
+.queue-card:hover { border-color: #68765c; box-shadow: 0 2px 0 #d3dacb; }
+@keyframes queue-arrive { from { opacity: .55; } }
+.queue-cover { display: block; position: relative; }
+.queue.live-queue li img { display: block; width: 100%; height: clamp(52px,5.8vw,80px); border-radius: 5px; object-fit: cover; }
+.queue-rank {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  background: var(--paper);
+  border: 1px solid #555c50;
+  border-radius: 4px;
+  color: var(--ink);
+  padding: 2px 4px;
+  font-size: 10px;
+  font-weight: 650;
+  line-height: 1;
+}
+.queue-rank.rising { background: #ddf4c8; }
+.queue-rank.falling { background: #fbe4d7; }
+.queue-rank.rising, .queue-rank.falling { animation: rank-shift .4s ease-out; }
+@keyframes rank-shift { from { transform: translateY(3px) scale(.95); } }
+.queue-details { display: block; padding: 5px 3px 3px; }
+.queue.live-queue li strong { line-height: 1.22; overflow-wrap: anywhere; }
+@media (max-width: 420px) {
+  .queue.live-queue ol { --queue-gap: 6px; }
+  .queue-details { padding-inline: 1px; }
+  .queue.live-queue li strong { font-size: 12px; }
+  .interest-row { grid-template-columns: 109px minmax(0, 1fr) 41px; gap: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .interest-pulse { display: none; }
+}
